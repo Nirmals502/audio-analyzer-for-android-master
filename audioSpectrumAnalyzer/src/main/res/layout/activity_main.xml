@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/background_light"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <github.bewantbe.audio_analyzer_for_android.SelectorText
+            android:id="@+id/run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="180dp"
+            android:layout_marginRight="180dp"
+            android:layout_marginBottom="4dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:tag="select"
+            android:text="run"
+            android:textSize="20sp"
+            android:visibility="gone"
+            custom:items="run stop"
+            custom:itemsDisplay="@string/button_run" />
+
+        <Button
+            android:id="@+id/button_average"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_button_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="223dp"
+            android:layout_marginRight="223dp"
+            android:onClick="showPopupMenu"
+            android:text="@string/ave"
+            android:textSize="@dimen/button_text_fontsize"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:layout_below="@+id/textView2"
+
+
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="80dp"
+            android:background="#204B9A"
+            android:text="Listen"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="160dp"
+
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/button"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:background="@android:color/darker_gray" />
+
+        <github.bewantbe.audio_analyzer_for_android.SelectorText
+            android:id="@+id/button_recording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:tag="select"
+            android:text="Mon"
+            android:textSize="20sp"
+            android:visibility="gone"
+            custom:items="Mon Rec"
+            custom:itemsDisplay="@string/button_recording" />
+
+    </RelativeLayout>
+
+    <view
+        android:id="@+id/plot"
+        class="github.bewantbe.audio_analyzer_for_android.AnalyzerGraphic"
+        android:layout_width="fill_parent"
+
+        android:layout_height="match_parent"
+
+
+        android:layout_below="@+id/container"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:background="#00FF00"
+        custom:cutoffDb="-25"
+        custom:sampleRate="16000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_RMS"
+            android:layout_width="@dimen/textview_RMS_layout_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:lines="2"
+            android:text="@string/textview_RMS_text"
+            android:typeface="monospace"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textview_cur"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/textview_RMS"
+            android:layout_toRightOf="@id/textview_RMS"
+            android:text="@string/textview_cur_text"
+            android:typeface="monospace"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textview_peak"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textview_cur"
+            android:layout_toEndOf="@id/textview_RMS"
+            android:layout_toRightOf="@id/textview_RMS"
+            android:text="@string/textview_peak_text"
+            android:typeface="monospace"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textview_rec"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_rec_text"
+        android:typeface="monospace"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50sp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/button_sample_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_button_height"
+            android:layout_gravity="center"
+            android:onClick="showPopupMenu"
+            android:text="@string/sample_s"
+            android:textSize="@dimen/button_text_fontsize" />
+
+        <Button
+            android:id="@+id/button_fftlen"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_button_height"
+            android:layout_gravity="center"
+            android:onClick="showPopupMenu"
+            android:text="@string/fftlen"
+            android:textSize="@dimen/button_text_fontsize" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <github.bewantbe.audio_analyzer_for_android.SelectorText
+            android:id="@+id/spectrum_spectrogram_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:tag="select"
+            android:text="1D"
+            android:textSize="20sp"
+            custom:items="spum spam"
+            custom:itemsDisplay="@string/button_spectrum_spectrogram_mode" />
+
+        <github.bewantbe.audio_analyzer_for_android.SelectorText
+            android:id="@+id/dbA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:tag="select"
+            android:text="dB"
+            android:textSize="20sp"
+            custom:items="dB dBA"
+            custom:itemsDisplay="@string/button_dbA" />
+
+        <!--<github.bewantbe.audio_analyzer_for_android.SelectorText-->
+        <!--android:id="@+id/graph_view_mode"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="4dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:tag="select"-->
+        <!--android:text="scale"-->
+        <!--android:textSize="20sp"-->
+        <!--custom:items="cursor scale" />-->
+
+        <github.bewantbe.audio_analyzer_for_android.SelectorText
+            android:id="@+id/freq_scaling_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:tag="select"
+            android:text="linear"
+            android:textSize="20sp"
+            custom:items="linear log note"
+            custom:itemsDisplay="@string/button_freq_scaling_mode" />
+
+    </LinearLayout>
+
+</RelativeLayout>
